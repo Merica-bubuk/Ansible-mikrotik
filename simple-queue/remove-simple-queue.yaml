@@ -1,0 +1,12 @@
+---
+- hosts: kumkum
+  connection: network_cli
+  vars:
+    name: indra
+    passwd: indra
+  gather_facts: no
+
+  tasks:
+  - name: simple queue limit bandwith
+    routeros_command:
+      commands: /queue simple remove  indra

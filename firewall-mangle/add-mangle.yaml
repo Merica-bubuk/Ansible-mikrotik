@@ -1,0 +1,12 @@
+---
+- hosts: kumkum
+  connection: network_cli
+  vars:
+    name: indra
+    passwd: indra
+  gather_facts: no
+
+  tasks:
+  - name: add mangle ip firewall
+    routeros_command:
+      commands: /ip firewall mangle add chain=prerouting src-address=192.168.20.122 dst-address-list=!LAN action=mark-routing new-routing-mark=via_laxo_new comment=indra

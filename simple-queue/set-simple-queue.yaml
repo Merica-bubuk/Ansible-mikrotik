@@ -1,0 +1,17 @@
+---
+- hosts: kumkum
+  connection: network_cli
+  vars:
+    name: indra
+    passwd: indra
+  gather_facts: no
+
+ # tasks:
+  #- name: simple queue limit bandwith
+  #  routeros_command:
+   #   commands: /queue simple set queue=pcq_download_15M/pcq_download_15M limit-at=50M/50M max-limit=100M/100M number=47
+
+  tasks:
+  - name: limit PC livestream port 1
+    routeros_command:
+      commands: /queue simple set PC-livestream-1 queue=default-small/default-small limit-at=0/0 max-limit=100M/100M

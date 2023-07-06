@@ -1,0 +1,12 @@
+---
+- hosts: kumkum
+  connection: network_cli
+  vars:
+    name: indra
+    passwd: indra
+  gather_facts: no
+
+  tasks:
+  - name: add simple queue and limit bandwith
+    routeros_command:
+      commands: /queue simple add queue=pcq_download_25M/pcq_download_25M limit-at=60M/60M max-limit=60M/60M name=indra target=192.168.20.122
